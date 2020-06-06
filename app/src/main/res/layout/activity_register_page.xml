@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VIEWS.registerPage">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#03A9F4"
+        android:padding="5dp"
+        android:text="Informacion del Negocio"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20sp"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Negocio"
+                android:textSize="18sp"
+                />
+
+            <EditText
+                android:id="@+id/nametxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="14"
+                android:inputType="textPersonName"
+                android:maxLength="50"
+                android:text=""
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripcion"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                />
+
+            <EditText
+                android:id="@+id/descriptiontxt"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:ems="14"
+                android:inputType="textMultiLine"
+                android:maxLength="250"
+                android:text="" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Direccion"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                />
+
+            <EditText
+                android:id="@+id/addresstxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="14"
+                android:inputType="text"
+                android:maxLength="30"
+                android:text="" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="Propietario"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/nombrePersonatxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="14"
+                android:inputType="text"
+                android:text=""
+                android:maxLength="50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefono/Whatsapp"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/numberteltxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="14"
+                android:text=""
+                android:inputType="number|text"
+                android:maxLength="10" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horario"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/timeinit"
+                    android:layout_width="165sp"
+                    android:layout_height="53dp"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="a"
+                    android:textSize="24sp"
+                    />
+
+                <Spinner
+                    android:id="@+id/timefinal"
+                    android:layout_width="165sp"
+                    android:layout_height="53dp"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/categories"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="53dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Envio"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <CheckBox
+                    android:id="@+id/localdeliv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40sp"
+                    android:text="En Local"
+
+                    />
+
+                <CheckBox
+                    android:id="@+id/homedeliv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Domicilio"
+                    />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/upImage"
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_marginTop="30sp"
+
+                />
+
+            <Button
+                android:id="@+id/btnimage"
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:background="#60CEFF"
+                android:layout_gravity="center"
+                android:text="Seleccionar imagen"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnpostregister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:textColor="#FFFFFF"
+                android:background="#FF5722"
+                android:layout_marginBottom="30sp"
+                android:text="Registrar"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

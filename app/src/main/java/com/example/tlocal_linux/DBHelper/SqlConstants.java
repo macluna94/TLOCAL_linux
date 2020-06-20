@@ -17,6 +17,7 @@ public class SqlConstants {
     public  static final String CATEGORY_LOCAL = "category";
     public  static final String DELIVERY_LOCAL ="delivery";
     public  static final String IMAGE = "dirImage";
+    public static final String LOCATION = "location";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + NameTable  + " ( "
             + ID_LOCAL + " TEXT, "
@@ -28,7 +29,8 @@ public class SqlConstants {
             + TIME_LOCAL + " TEXT, "
             + CATEGORY_LOCAL + " TEXT, "
             + DELIVERY_LOCAL + " TEXT, "
-            + IMAGE + " TEXT) ";
+            + IMAGE + "  TEXT, "
+            + LOCATION + " TEXT ) ";
 
 
 }

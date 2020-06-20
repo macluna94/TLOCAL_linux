@@ -1,7 +1,7 @@
 package com.example.tlocal_linux;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +40,7 @@ public class AdapterLocales
     public void onBindViewHolder(ViewHolderLocales holder, int posi) {
         holder._nameLocal.setText(listaLocales.get(posi).getNameLocal());
         holder._description.setText(listaLocales.get(posi).getDescription());
-        Picasso.get().load(ApiLocal.URL_API+"view/"+listaLocales.get(posi).getDirImage()).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background).into(holder._idImage);
+        Picasso.get().load(ApiLocal.URL_API+"local/view/"+listaLocales.get(posi).getDirImage()).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background).into(holder._idImage);
 
     }
 

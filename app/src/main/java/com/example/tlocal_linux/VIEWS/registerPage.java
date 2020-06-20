@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.tlocal_linux.ApiServices.ApiLocal;
 import com.example.tlocal_linux.MODELS.localInfo;
+import com.example.tlocal_linux.MapsActivity;
 import com.example.tlocal_linux.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -63,13 +64,16 @@ public class registerPage extends AppCompatActivity {
     EditText nametxt, descriptiontxt, direcciontxt, teltxt,namepersona;
     Spinner categoria, ih, fh;
     CheckBox inhome, inlocal;
-    Button btnregister, btnSelectImage;
+    Button btnregister, btnSelectImage, openMap;
 
-    ImageView preImage;
+    ImageView preImage, check_icon;
     final int IMG_REQUEST = 777;
     Bitmap bitmap;
 
     ProgressDialog progressDialog;
+
+    List<String> location = new ArrayList<>();
+    boolean status_check_ubiq = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,11 +95,24 @@ public class registerPage extends AppCompatActivity {
 
         preImage = (ImageView) findViewById(R.id.upImage);
         preImage.setVisibility(View.GONE);
+        check_icon = (ImageView) findViewById(R.id.check_icon);
+        check_icon.setVisibility(View.GONE);
 
         btnregister = (Button) findViewById(R.id.btnpostregister);
         btnregister.setVisibility(View.GONE);
 
         btnSelectImage = (Button) findViewById(R.id.btnimage);
+
+        openMap = findViewById(R.id.openMap);
+
+        openMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent _intentM = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivityForResult(_intentM,333);
+            }
+        });
+
 
         btnSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,15 +162,21 @@ public class registerPage extends AppCompatActivity {
                                     if (checkDelvers(deliverys) != true){
                                         Toast.makeText(registerPage.this, "SELECCIONE EL METODO DE ENTREGA", Toast.LENGTH_SHORT).show();
                                     }else{
-                                        try {
-                                            progressDialog = new ProgressDialog(registerPage.this);
-                                            progressDialog.show();
-                                            progressDialog.setContentView(R.layout.bc_dialog);
-                                            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                                            checkDelvers(deliverys);
-                                            postDataLocal();
-                                        } catch (IOException e) {
-                                            e.printStackTrace();
+                                        if (status_check_ubiq != true)
+                                        {
+                                            Toast.makeText(registerPage.this, "SELECCIONE UBICACION EN EL MAPA", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            try {
+                                                progressDialog = new ProgressDialog(registerPage.this);
+                                                progressDialog.show();
+                                                progressDialog.setContentView(R.layout.bc_dialog);
+                                                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                                                checkDelvers(deliverys);
+                                                postDataLocal();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
                                         }
                                     }
                                 }
@@ -168,7 +191,8 @@ public class registerPage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null){
+        if (requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null)
+        {
             Uri path = data.getData();
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), path);
@@ -182,6 +206,19 @@ public class registerPage extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        if (requestCode == 333 && data != null && resultCode == RESULT_OK)
+        {
+            Bundle ubq = data.getExtras();
+
+            //String lg = data.getStringExtra("lg");
+            check_icon.setVisibility(View.VISIBLE);
+            status_check_ubiq = true;
+
+            location.add(ubq.getString("lt"));
+            location.add(ubq.getString("lg"));
+
+        }
+
     }
 
 
@@ -196,7 +233,7 @@ public class registerPage extends AppCompatActivity {
                 nametxt.getText().toString(), descriptiontxt.getText().toString(),
                 direcciontxt.getText().toString(), teltxt.getText().toString(),
                 namepersona.getText().toString(), openTime, categoria.getSelectedItem().toString(),
-                deliverysF, imagen
+                deliverysF, imagen, location
         );
 
         Call<localInfo> call = cliente.sendLocal(localed);
@@ -247,6 +284,14 @@ public class registerPage extends AppCompatActivity {
         //return imgBytes;
         return Base64.encodeToString(imgBytes,Base64.NO_WRAP);
     }
+
+
+
+
+
+
+
+
 }
 
 

@@ -13,8 +13,10 @@ public class localInfo {
     private String category;
     private List<String> delivery = null;
     private String dirImage;
+    private List<String> location = null;
 
-    public localInfo(String _id, String nameLocal, String description, String address, String phoneNumber, String namePersonal, String openTime, String category, List<String> delivery, String dirImage) {
+
+    public localInfo(String _id, String nameLocal, String description, String address, String phoneNumber, String namePersonal, String openTime, String category, List<String> delivery, String dirImage, List<String> location) {
         this._id = _id;
         this.nameLocal = nameLocal;
         this.description = description;
@@ -25,10 +27,31 @@ public class localInfo {
         this.category = category;
         this.delivery = delivery;
         this.dirImage = dirImage;
+        this.location = location;
     }
-
     public localInfo() {
 
+    }
+
+
+
+
+
+
+    public String getDirImage() {
+        return dirImage;
+    }
+
+    public void setDirImage(String dirImage) {
+        this.dirImage = dirImage;
+    }
+
+    public List<String> getLocation() {
+        return location;
+    }
+
+    public void setLocation(List<String> location) {
+        this.location = location;
     }
 
     public String getdirImage() {

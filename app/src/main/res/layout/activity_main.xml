@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
 
-            <android.support.v7.widget.GridLayout
+            <androidx.gridlayout.widget.GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -41,7 +41,7 @@
                 app:rowCount="3">
 
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemAbarrotes"
                     android:layout_width="158dp"
                     android:layout_height="169dp"
@@ -78,9 +78,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemAlimentos"
                     android:layout_width="158dp"
                     android:layout_height="20dp"
@@ -116,9 +116,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemTiendas"
                     android:layout_width="158dp"
                     android:layout_height="169dp"
@@ -155,9 +155,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemDivisas"
                     android:layout_width="158dp"
                     android:layout_height="173dp"
@@ -193,9 +193,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemElectronica"
                     android:layout_width="158dp"
                     android:layout_height="169dp"
@@ -232,9 +232,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemFarmacias"
                     android:layout_width="158dp"
                     android:layout_height="173dp"
@@ -270,9 +270,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemFiestas"
                     android:layout_width="158dp"
                     android:layout_height="173dp"
@@ -308,9 +308,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemFloreria"
                     android:layout_width="158dp"
                     android:layout_height="0dp"
@@ -346,9 +346,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemMuebleria"
                     android:layout_width="158dp"
                     android:layout_height="170dp"
@@ -384,9 +384,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemPapeleria"
                     android:layout_width="158dp"
                     android:layout_height="0dp"
@@ -423,9 +423,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemPinturas"
                     android:layout_width="158dp"
                     android:layout_height="173dp"
@@ -461,9 +461,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemPublicidad"
                     android:layout_width="158dp"
                     android:layout_height="173dp"
@@ -499,9 +499,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemRefaccionarias"
                     android:layout_width="158dp"
                     android:layout_height="173dp"
@@ -537,9 +537,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemSalud"
                     android:layout_width="158dp"
                     android:layout_height="173dp"
@@ -575,9 +575,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemServicios"
                     android:layout_width="158dp"
                     android:layout_height="169dp"
@@ -613,9 +613,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemRopa"
                     android:layout_width="158dp"
                     android:layout_height="0dp"
@@ -651,9 +651,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemZapateria"
                     android:layout_width="158dp"
                     android:layout_height="172dp"
@@ -689,9 +689,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/itemOtros"
                     android:layout_width="158dp"
                     android:layout_height="172dp"
@@ -722,9 +722,9 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-            </android.support.v7.widget.GridLayout>
+            </androidx.gridlayout.widget.GridLayout>
 
             <Button
                 android:id="@+id/btnRegister"

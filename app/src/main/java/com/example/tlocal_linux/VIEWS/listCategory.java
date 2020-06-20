@@ -5,16 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.Image;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
-import android.net.wifi.aware.WifiAwareNetworkInfo;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -131,7 +127,7 @@ public class listCategory extends AppCompatActivity {
             public void onResponse(Call<List<listItemCategory>> call, Response<List<listItemCategory>> response) {
                 for (int it = 0; it < response.body().size(); it++) {
                     Log.i("P2: ", "LISTA --->"+ response.body().get(it).getNameLocal()  );
-
+                    Log.i("P2: ", "IMAGEN --->"+ response.body().get(it).getDirImage()  );
                     Datos.add(new listItemCategory(response.body().get(it).get_id(), response.body().get(it).getNameLocal(), response.body().get(it).getDescription(), response.body().get(it).getDirImage()));
                 }
 

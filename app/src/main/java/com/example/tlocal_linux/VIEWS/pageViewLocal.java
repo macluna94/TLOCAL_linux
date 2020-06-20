@@ -9,7 +9,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,13 @@ import com.example.tlocal_linux.DBHelper.SQLhelper;
 import com.example.tlocal_linux.DBHelper.SqlConstants;
 import com.example.tlocal_linux.MODELS.localInfo;
 import com.example.tlocal_linux.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
@@ -36,7 +45,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class pageViewLocal extends AppCompatActivity {
+public class pageViewLocal extends  FragmentActivity implements OnMapReadyCallback {
     static String numberCall = "";
 
     OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -69,18 +78,31 @@ public class pageViewLocal extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    private GoogleMap mapa;
+
+    String lt ="";
+    String ln ="";
+    String title_map ="";
+    String ideal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_view_local);
 
+
         Intent preIntent = getIntent();
-        String idlocal = preIntent.getStringExtra("idLocal");
+        ideal = preIntent.getStringExtra("idLocal");
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapViewLocal);
+        mapFragment.getMapAsync(this);
 
         progressDialog = new ProgressDialog(pageViewLocal.this);
         progressDialog.setContentView(R.layout.bc_dialog);
         Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.show();
+
+
 
 
         nameLocal = (TextView) findViewById(R.id.nameLocal_txt);
@@ -97,12 +119,15 @@ public class pageViewLocal extends AppCompatActivity {
 
 
 
+
         conn = new SQLhelper(getApplicationContext(), SqlConstants.DB_NAME, null, 1);
 
         if (isConnection()){
-            loadRemoteServer(idlocal);
+            loadRemoteServer(ideal);
+
+
         }else {
-            loadDBLocal(idlocal);
+            loadDBLocal(ideal);
         }
 
 
@@ -140,12 +165,26 @@ public class pageViewLocal extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 numberCall = response.body().getPhoneNumber();
+                lt = response.body().getLocation().get(0);
+                ln = response.body().getLocation().get(1);
+                title_map = response.body().getNameLocal();
+
+                Log.d("UBIQ", lt+"  " +ln);
+
+                Toast.makeText(pageViewLocal.this, response.body().getLocation().get(1), Toast.LENGTH_LONG).show();
+
+
+                Picasso.get().load(ApiLocal.URL_API+"local/view/"+response.body().getdirImage()).placeholder(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_launcher_background)
+                        .into(imageView);
+                mapa.setMinZoomPreference(16);
+                // Add a marker in Sydney and move the camera
+                LatLng sydney = new LatLng(Double.parseDouble(lt), Double.parseDouble(ln));
+                mapa.addMarker(new MarkerOptions().position(sydney).title(title_map));
+                mapa.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
                 progressDialog.dismiss();
 
-                Picasso.get().load(ApiLocal.URL_API+"view/"+response.body().getdirImage()).placeholder(R.drawable.ic_launcher_background)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(imageView);
             }
 
             @Override
@@ -252,9 +291,6 @@ public class pageViewLocal extends AppCompatActivity {
             case "Zapateria":
                 Picasso.get().load(R.drawable.zapateria).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background).into(imageView);
                 break;
-
-
-
             default:
                 Picasso.get().load(R.drawable.ic_launcher_foreground).placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background).into(imageView);
                 break;
@@ -273,4 +309,17 @@ public class pageViewLocal extends AppCompatActivity {
         return  isConected;
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mapa = googleMap;
+        UiSettings settings = googleMap.getUiSettings();
+
+        settings.setZoomControlsEnabled(true);
+        settings.setScrollGesturesEnabled(true);
+        settings.setZoomGesturesEnabled(true);
+
+
+
+
+    }
 }
